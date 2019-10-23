@@ -32,7 +32,8 @@
 
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form method="get" action="">
+                        @csrf
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">

@@ -31,31 +31,41 @@
                         <h1 class="text-center text-success">Create an Account!</h1>
 
                     </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-body">
-                        <form>
+                        <form  action="{{route('store')}}" method="post">
+                            @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="name" placeholder="Name">
+                                    <input type="text" class="form-control" name="name" placeholder="Name" >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="inputEmail3"  name="email" placeholder="Email">
+                                    <input type="email" class="form-control" id="inputEmail3"  name="email" placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-4 col-form-label"> Confirm Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="inputPassword3" name="confirm_password" placeholder="Password">
+                                    <input type="password" class="form-control" id="inputPassword3" name="confirm_password" placeholder="Password" required>
                                 </div>
                             </div>
 

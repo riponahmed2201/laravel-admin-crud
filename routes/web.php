@@ -14,11 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//
+//Route::get('login', function () {
+//    return view('admin.login');
+//});
+//
+//Route::get('register', function () {
+//    return view('admin.register');
+//});
+Route::get('/register','RegisterController@create');
+Route::post('/register','RegisterController@store')->name('store');
 
-Route::get('login', function () {
-    return view('admin.login');
-});
-
-Route::get('register', function () {
-    return view('admin.register');
-});
+Route::get('/login','RegisterController@create')->name('login');
+//Route::post('/login','RegisterController@store')->name('store');
