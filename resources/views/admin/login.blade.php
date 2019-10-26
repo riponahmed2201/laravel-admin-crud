@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Laravel</title>
 </head>
 <body >
 <div>
@@ -31,19 +31,32 @@
                     <h1 class="text-center text-success">Welcome Back!</h1>
 
                 </div>
+                @if (count($errors)>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body">
-                    <form method="get" action="">
+
+
+                    <form method="post" action="{{route('custom.login')}}">
                         @csrf
+
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                <input type="email" class="form-control"  placeholder="Email" name="email">
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                <input type="password" class="form-control"  placeholder="Password" name="password">
                             </div>
                         </div>
 
@@ -58,7 +71,7 @@
                                     <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                 </a>
                                 <hr>
-                                <a href="{{url('register')}}" >
+                                <a href="{{route('custom.register')}}" >
                                    <p class="text-center">Create an Account!</p>
                                 </a>
                             </div>

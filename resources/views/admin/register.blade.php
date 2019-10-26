@@ -31,7 +31,7 @@
                         <h1 class="text-center text-success">Create an Account!</h1>
 
                     </div>
-                    @if ($errors->any())
+                    @if (count($errors)>0)
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -40,32 +40,41 @@
                             </ul>
                         </div>
                     @endif
+
+                    @if(session('status'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ session('status') }}</strong>
+                        </div>
+                    @endif
                     <div class="card-body">
-                        <form  action="{{route('store')}}" method="post">
+                        <form  action="{{route('custom.register')}}" method="post" >
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="name" placeholder="Name" >
+                                    <input type="text" class="form-control" name="name"  placeholder="Name" value="{{old('name')}}">
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="inputEmail3"  name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control" id="inputEmail3"  name="email" placeholder="Email"   value="{{old('email')}}">
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" required>
+                                    <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" >
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-4 col-form-label"> Confirm Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="inputPassword3" name="confirm_password" placeholder="Password" required>
+                                    <input type="password" class="form-control" id="inputPassword3" name="password_confirmation" placeholder="Password" >
                                 </div>
                             </div>
 
@@ -80,7 +89,7 @@
                                         <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                     </a>
                                     <hr>
-                                    <a href="{{url('login')}}" >
+                                    <a href="{{route('custom.login')}}" >
                                         <p class="text-center">Already have an account? Login!</p>
                                     </a>
                                 </div>

@@ -22,7 +22,7 @@ class RegisterController extends Controller
       $data->email= $request->email;
       $data->password= $request->password;
       $data->save();
-      return redirect('admin.login')->with('status','Registration succesfully. Now login please!');
+      return redirect('login')->with('status','Registration succesfully. Now login please!');
 
 
    }
